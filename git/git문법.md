@@ -1,3 +1,8 @@
+> ### 📌문법에서 
+> `< >`는 필수 입력
+> 
+> `[ ]`는 선택 사항
+
 #  GIT의 동작
 
 ## 📑`git init`
@@ -77,7 +82,7 @@
 - `<name>` : 별칭 사용해 로컬 저장소 한 개에 여러 우ㅝㄴ격 저장소 추가 가능
 - `<url>` : 추가하는 원격 저장소의 URL
 
-## 📑`git push origin master` 
+## 📑`git push <name> master` 
 - 원격 저장소에 commit 목록 업로드
 
 > ### ✅ pull & clone
@@ -88,4 +93,42 @@
 > - remote(원격)를 복제해 local로 갖고 옴.
 > - local이 없어야 함.
 
-## 📑
+## 📑`git pull <name> master`
+- 원격 저장소의 변경사항만 받아옴 (업데이트)
+
+## 📑`git clone <url>`
+- 원격 저장소 전체를 복제 (다운로드)
+- clone으로 받은 프로젝트는 이미 `git init` 되어 있음.
+
+## 📑gitignore
+- git에서 특정 파일이나 디렉토리 추적하지 않도록 설정하는 데 사용되는 텍스트 파일
+- 프로젝트에 따라 공유하지 않아야 하는 것들도 존재
+- `.gitignore` 파일 생성 (`git init` 전에 하기)
+- 이미 git 관리받은 이력 있는 파일 / 디렉토리는 나중에 gitignore 작성해도 적용 X (방법 있긴 함. 나중에-!)
+- gitignore 목록 생성 서비스: http://www.toptal.com/developers/gitignore
+
+## 📑`git revert <commit id>`
+- 특정 commit을 없었던 일로 만드는 작업
+- "재설정", 단일 commit을 실행 취소 하는 것
+- commit을 없애고, 없앴다는 사실을 새로운 commit으로 추가
+- vim 에디터 실행되면 `:wq` 치고 나오기
+- 변경사항을 안전하게 실행 취소할 수 있도록 도와주는 순방향 실행 취소 작업
+- 장점
+  - git에서 기록 손실 방지
+  - 기록의 무결성과 협업의 신뢰성 높임
+
+## 📑`git revert --no-edit <commit id>`
+- vim 편집기 열지 않고 자동으로 commit 진행
+
+## 📑`git revert --no-commit <commit id>`
+- 자동으로 commit하지 않고, staging area에만 올림 (이후 직접 commit해야 함)
+- 여러 commit을 revert할 때 하나의 commit으로 묶는 것 가능
+
+## 📑`git reset [option] <commit id>`
+- 특정 commit으로 되돌아 갔을 때, 되돌아간 commit 이후의 commit은 모두 삭제
+- "되돌리기", 시계를 마치 과거로 돌리는 듯한 행위
+- 삭제되는 commit들의 기록을 어떤 영역에 남겨둘 것인지 옵션 활용해 조정 가능
+- 옵션
+  - `--soft` : 삭제된 commit의 기록을 staging area에 남김
+  - `--mixed` : 삭제된 commit의 기록을 working directory에 남김
+  - `--hard` : 삭제된 commit의 기록을 남기지 않음
