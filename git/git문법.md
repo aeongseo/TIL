@@ -132,3 +132,7 @@
   - `--soft` : 삭제된 commit의 기록을 staging area에 남김
   - `--mixed` : 삭제된 commit의 기록을 working directory에 남김
   - `--hard` : 삭제된 commit의 기록을 남기지 않음
+
+## 📑`git reflog`
+- HEAD가 이전에 가리켰던 모든 commit 보여줌
+reset의 --hard 옵션 통해 지워진 commit도 복구 가능
